@@ -1,4 +1,4 @@
-const timeDisplay = $('#timeDisplay')
+const timeDisplay = $('#currentDay')
 let now = moment().format("dddd MMM Mo YYYY hh:mm a");
 let nowHours = Number(moment().format("H"));
 
@@ -10,11 +10,15 @@ $(".saveButton").on("click", function(){
     this.blur();
 });
 
-$(".saveButton").on("click", function(){
-    let savedEvent = $(this).prev().val();
-    localStorage.setItem($(this).val(), savedEvent);
-    this.blur();
-});
+function changeClass(hour, id){
+    if (nowHours > hour){
+        $(id).addClass("past");
+        $(id).removeClass("future");
+    } else if(nowHours === hour){
+        $(id).removeClass("future");
+        $(id).addClass("present");
+    }
+}
 
 changeClass(7, "#hourSevenAm");
 changeClass(8, "#hourEigAm");
