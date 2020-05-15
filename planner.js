@@ -1,4 +1,4 @@
-const timeDisplay = $('#currentDay')
+const timeDisplay = $('#currentDay');
 let now = moment().format("dddd MMM Mo YYYY hh:mm a");
 let nowHours = Number(moment().format("H"));
 
